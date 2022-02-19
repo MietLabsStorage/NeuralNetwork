@@ -81,8 +81,8 @@ kn = 0:Nn - 1;
 Ex = exp(-j * 2 * pi / Nn * kn' * kn);
 Y_sin_n = y_sin_n * Ex;
 Y_cos_n = y_cos_n * Ex;
-Y_sin_n_ffn = fft(y_sin_n);
-Y_cos_n_ffn = fft(y_cos_n);
+Y_sin_n_fft = fft(y_sin_n);
+Y_cos_n_fft = fft(y_cos_n);
 
 Y_sin_n_2 = Y_sin_n .* conj(Y_sin_n);
 Y_cos_n_2 = Y_cos_n .* conj(Y_cos_n);
@@ -122,40 +122,75 @@ ylabel('Fourier-image modulus squared');
 figure(3)
 subplot(2, 2, 1);
 grid on; hold on;
-plot(kt, real(Y_sin_t), 'r');
-axis([0 Nt -1.1 1.1]);
+plot(kt, real(Y_sin_t), 'r', 'LineWidth', 2);
+plot(kt, real(Y_sin_t_fft), 'b');
 title('Интервал наблюдения (sin)');
 xlabel('Time, s');
 ylabel('Initial signal');
-legend('real', 'imag');
+legend('ДПФ', 'fft');
 
 subplot(2, 2, 2);
 grid on; hold on;
-plot(kn, real(Y_sin_n), 'r');
-axis([0 Nn -1.1 1.1]);
+plot(kn, real(Y_sin_n), 'r', 'LineWidth', 2);
+plot(kn, real(Y_sin_n_fft), 'b');
 title('Количество точек наблюдения (sin)');
 xlabel('Time, s');
 ylabel('Initial signal');
-legend('real', 'imag');
+legend('ДПФ', 'fft');
 
 subplot(2, 2, 3);
 grid on; hold on;
-plot(kt, real(Y_cos_t), 'r');
-plot(kt, imag(Y_cos_t), 'b');
-axis([0 Nt -1.1 1.1]);
+plot(kt, real(Y_cos_t), 'r', 'LineWidth', 2);
+plot(kt, real(Y_cos_t_fft), 'b');
 title('Интервал наблюдения (cos)');
 xlabel('Time, s');
 ylabel('Initial signal');
-legend('real', 'imag');
+legend('ДПФ', 'fft');
 
 subplot(2, 2, 4);
 grid on; hold on;
-plot(kn, real(Y_cos_n), 'r');
-plot(kn, imag(Y_cos_n), 'b');
-axis([0 Nn -1.1 1.1]);
+plot(kn, real(Y_cos_n), 'r', 'LineWidth', 2);
+plot(kn, real(Y_cos_n_fft), 'b');
 title('Количество точек наблюдения (cos)');
 xlabel('Time, s');
 ylabel('Initial signal');
-legend('real', 'imag');
+legend('ДПФ', 'fft');
+
+figure(4)
+subplot(2, 2, 1);
+grid on; hold on;
+plot(kt, imag(Y_sin_t), 'r', 'LineWidth', 2);
+plot(kt, imag(Y_sin_t_fft), 'b');
+title('Интервал наблюдения (sin)');
+xlabel('Time, s');
+ylabel('Initial signal');
+legend('ДПФ', 'fft');
+
+subplot(2, 2, 2);
+grid on; hold on;
+plot(kn, imag(Y_sin_n), 'r', 'LineWidth', 2);
+plot(kn, imag(Y_sin_n_fft), 'b');
+title('Количество точек наблюдения (sin)');
+xlabel('Time, s');
+ylabel('Initial signal');
+legend('ДПФ', 'fft');
+
+subplot(2, 2, 3);
+grid on; hold on;
+plot(kt, imag(Y_cos_t), 'r', 'LineWidth', 2);
+plot(kt, imag(Y_cos_t_fft), 'b');
+title('Интервал наблюдения (cos)');
+xlabel('Time, s');
+ylabel('Initial signal');
+legend('ДПФ', 'fft');
+
+subplot(2, 2, 4);
+grid on; hold on;
+plot(kn, imag(Y_cos_n), 'r', 'LineWidth', 2);
+plot(kn, imag(Y_cos_n_fft), 'b');
+title('Количество точек наблюдения (cos)');
+xlabel('Time, s');
+ylabel('Initial signal');
+legend('ДПФ', 'fft');
 
 disp('**********   Конец работы   **********');
