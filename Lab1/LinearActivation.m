@@ -1,4 +1,8 @@
-function LinearActivation(V)
+function U = LinearActivation(V, needPlot)
+
+if nargin < 2
+    needPlot = true;
+end
 
 v0_min = -1;
 v0_max = 1;
@@ -19,12 +23,14 @@ for v = V
     U(end + 1) = 0.5 + v / 2;
 end
 
-plot(V, U, '*');
+if needPlot
+    plot(V, U, '*');
 
-grid on;
-axis([V(1) V(end) -0.5 1.5]);
-xlabel('arg');
-ylabel('val');
-title('Linear Activation Function');
+    grid on;
+    axis([V(1) V(end) -0.5 1.5]);
+    xlabel('arg');
+    ylabel('val');
+    title('Linear Activation Function');
+end
 
 end

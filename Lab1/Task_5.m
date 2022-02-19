@@ -2,12 +2,17 @@ syms v;
 syms a;
 u = 1 / (1 + a * exp(v));
 
+% Теоретическое вычисление
 du = diff(u);
 
 disp('Derivative of ' + string(u) + ' is ' + string(du));
 
-ezplot(subs(du, 'a', 1));
+% Численное
+v_vals = -5:0.1:5;
+du_vals = subs(subs(du, 'a', 1), 'v', v_vals);
 
+% График
+plot(v_vals, du_vals);
 grid on;
 xlabel('arg');
 ylabel('val');
