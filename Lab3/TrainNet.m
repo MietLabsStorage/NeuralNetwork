@@ -4,7 +4,8 @@ if nargin < 1
     noiceCoef = 0;
 end
 
-[P, T] = GenerateInputArrays(noiceCoef);
+%[P, T] = GenerateInputArrays(noiceCoef);
+[P, T] = GenerateRandArrays();
 net = newff(minmax(P), [21, 15, 3], {'logsig' 'logsig' 'purelin'}, 'trainlm');
 net.performFcn = 'sse';
 net.trainParam.goal = 0.01;

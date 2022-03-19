@@ -1,15 +1,19 @@
+close all;
+
 coef = [0, 100, 20, 5];
 Y = zeros(3, 4);
 
 for i = 1:1:4
     delete 'MyNet.mat'
     TrainNet(coef(i));
+    TestNet();
     q = WorkNet;
     Y(:, i) = q;
 end
 
 x = 1:1:4;
 
+figure()
 subplot(3, 1, 1);
 plot(x, Y(1, :), '*b');
 line([0 5], [0.2 0.2], 'color', 'b');
