@@ -4,8 +4,8 @@ clear; close all;
 [R, Q] = size(alphabet);
 [S2, Q] = size(targets);
 
-S0 = 30;
-S1 = 30;
+S0 = 15;
+S1 = 50;
 net = newff(minmax(alphabet), [S0, S1, S2], {'logsig', 'logsig', 'logsig'}, 'traingdx');
 net.LW{2, 1} = net.LW{2, 1} * 0.01;
 net.b{2} = net.b{2} * 0.01;
@@ -65,8 +65,8 @@ for noiselevel = noise_range
 
     % Средние значения ошибок (100 последовательностей
     % из 26 векторов целей)
-    networkl = [networkl errors1 / 26/100];
-    network2 = [network2 errors2 / 26/100];
+    networkl = [networkl errors1 / 9/100];
+    network2 = [network2 errors2 / 9/100];
 end
 
 hold on

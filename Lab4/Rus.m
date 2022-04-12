@@ -64,9 +64,9 @@ for noiselevel = noise_range
     end
 
     % Средние значения ошибок (100 последовательностей
-    % из 26 векторов целей)
-    networkl = [networkl errors1 / 26/100];
-    network2 = [network2 errors2 / 26/100];
+    % из 9 векторов целей)
+    networkl = [networkl errors1 / 9/100];
+    network2 = [network2 errors2 / 9/100];
 end
 
 hold on
