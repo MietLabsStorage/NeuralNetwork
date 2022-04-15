@@ -36,13 +36,13 @@ for i=1:5
 
 % Обновление значений активности нейрона и сети в целом на основе правил активации (4.5) и (4.6) 
 % в описании лабораторной работы
-%         neuron = update_order(1,j);
-%         net = new_digit * weights(:,neuron);
-%         if net>0
-%             new_digit(1,neuron) = +1;
-%         elseif net<0
-%             new_digit(1,neuron) = -1;
-%         end
+         neuron = update_order(1,j);
+         net = new_digit * weights(:,neuron);
+         if net>0
+             new_digit(1,neuron) = +1;
+         elseif net<0
+             new_digit(1,neuron) = -1;
+         end
         new_digit = (2*(weights * new_digit' >= 0) - 1)';
     end
 end

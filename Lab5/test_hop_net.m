@@ -13,7 +13,7 @@ for epoch=1:iterations
     % Обновление состояния нейронов в случайном порядке
     for i=1:63
         neuron = update_order(1,i);
-        net = new_digit * weights(:,neuron);
+        net = new_digit .* weights(:,neuron);
         if net>0
             new_digit(1,neuron) = +1;
         elseif net<0
